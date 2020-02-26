@@ -9,6 +9,6 @@ program. You can also follow the prompts and it will properly exit.
 
 In **application.js** and **screen.js**, there are comments marked with "//
 TODO:". In **screen.js**, there are very specific instructions about what your
-code must do to make the UI correctly work. In **application.json**, there are
+code must do to make the UI correctly work. In **application.js**, there are
 less specific instructions because that is the object-oriented programming that
 you must perform.
