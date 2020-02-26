@@ -1,7 +1,8 @@
 # To-Do Item Command Line Utility
 
 Use this starter project to complete the object-oriented programming project
-**OOPS! I Forgot a Thing**.
+**OOPS! I Forgot a Thing**. It contains a fully-functional UI, that is, the
+input handling and screen transitions all appropriately work.
 
 Run this program using the command `node program.js`. Type CTRL+C to abort the
 program. You can also follow the prompts and it will properly exit.
