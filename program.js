@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
-const { MainScreen } = require('./screens');
+const { MainScreen } = require('./main-screen');
 const { State } = require('./application');
 
 const filePath = path.join(process.cwd(), 'tasks.json');

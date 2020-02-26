@@ -1,5 +1,6 @@
 // This is the State class that should manage the
 // entire state of your application.
+
 class State {
   // Called from program.js to create an instance
   // of the application state.
