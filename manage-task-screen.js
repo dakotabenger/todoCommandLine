@@ -20,6 +20,17 @@ class ManageTasksScreen {
     // TODO: Print the incomplete to-do items in the format as
     //       shown in the requirements, 1-based list.
 
+    let numRows = process.stdout.rows - 8;
+    for (let i = 0; i < this.state.getItemCount(); i++) {
+        if (numRows <= 0 ) {
+          break;
+      } else if (this.state.getItemIsIncomplete(i)) {
+          numRows--;
+          console.log(`${i + 1}.   ${this.state.getShortDesc(i)}`)
+        }
+      }
+    
+
     console.log();
     console.log("A. Add a new item");
     console.log("X. Return to main menu");
@@ -28,7 +39,7 @@ class ManageTasksScreen {
 
   show() {
     this.printUi();
-    this.rl.question("> ", answer => {
+    this.rl.question("> ", (answer) => {
       const index = Number.parseInt(answer) - 1;
       let screen = this;
       if (answer === "A") {
@@ -46,6 +57,7 @@ class ManageTasksScreen {
 exports.ManageTasksScreen = ManageTasksScreen;
 
 // Requires at bottom to prevent circular dependencies problems in node
-const { AddItemScreen } = require('./add-item-screen');
-const { MainScreen } = require('./main-screen');
-const { ItemDetailScreen } = require('./item-detail-screen');
+const { AddItemScreen } = require("./add-item-screen");
+const { MainScreen } = require("./main-screen");
+const { ItemDetailScreen } = require("./item-detail-screen");
+const { Task } = require("./application");

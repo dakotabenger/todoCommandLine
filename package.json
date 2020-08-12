@@ -1,0 +1,19 @@
+{
+  "name": "oop-task-manager-cli",
+  "version": "1.0.0",
+  "description": "Use this starter project to complete the object-oriented programming project **OOPS! I Forgot a Thing**. It contains a fully-functional UI, that is, the input handling and screen transitions all appropriately work.",
+  "main": "add-item-screen.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hassanmt96/oop-task-manager-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hassanmt96/oop-task-manager-cli/issues"
+  },
+  "homepage": "https://github.com/hassanmt96/oop-task-manager-cli#readme"
+}

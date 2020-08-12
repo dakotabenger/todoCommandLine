@@ -12,7 +12,8 @@ class EditCategoryScreen {
     this.categoryIndex = categoryIndex;
   }
 
-  printUi(categoryName) {
+  printUi() {
+    categoryName = this.state.getCategoryByIndex(this.categoryIndex)
     console.clear();
     console.log("********************************************");
     console.log("* EDIT CATEGORY                 (c) 1987   *");
@@ -21,22 +22,15 @@ class EditCategoryScreen {
     console.log(`You are editing \"${categoryName}\".`);
     console.log();
     console.log("What would you like to rename it? Hit");
-    console.log("\"Enter\" when you are done.");
+    console.log('"Enter" when you are done.');
     console.log();
   }
 
   show() {
-    // TODO: Use the value this.categoryIndex to get the
-    //       name of the category and set the following
-    //       value to the category name
-    const categoryName = "";
-
-    this.printUi(categoryName);
-    this.rl.question("> ", newCategoryName => {
-      // TODO: Update the category with the index stored
-      //       in the variable this.categoryIndex with the
-      //       value in the newCategoryName variable.
-      // TODO: Save the state
+    this.printUi();
+    this.rl.question("> ", (newCategoryName) => {
+      this.state.setCategory(this.categoryIndex,newCategoryName)
+      this.state.save()
 
       new ManageCategoriesScreen(this.rl, this.state).show();
     });
@@ -46,4 +40,4 @@ class EditCategoryScreen {
 exports.EditCategoryScreen = EditCategoryScreen;
 
 // Requires at bottom to prevent circular dependencies problems in node
-const { ManageCategoriesScreen } = require('./manage-categories-screen');
+const { ManageCategoriesScreen } = require("./manage-categories-screen");

@@ -23,7 +23,7 @@ class AddItemScreen {
     console.log("1. Note");
     console.log("2. Task");
     console.log();
-    console.log("Type the number and hit \"Enter\".");
+    console.log('Type the number and hit "Enter".');
     console.log();
   }
 
@@ -33,7 +33,7 @@ class AddItemScreen {
     console.log("* CREATE A NOTE                 (c) 1987   *");
     console.log("********************************************");
     console.log();
-    console.log("(Type your text and hit \"Enter\" to return to");
+    console.log('(Type your text and hit "Enter" to return to');
     console.log("the to-do list screen, 300 characters max.)");
     console.log();
     console.log("What is the note?");
@@ -61,8 +61,9 @@ class AddItemScreen {
     console.log("What is the category?");
     console.log();
 
-    // TODO: Print all five category names with a one-based index
-    //       like in the screen mockup in the project description.
+    for (let i = 0; i < this.state.getCategoryByCount(); i++) {
+      console.log(`${i + 1} ${this.state.getCategoryByIndex(i)}`);
+    }
 
     console.log();
   }
@@ -76,7 +77,7 @@ class AddItemScreen {
     console.log(`TITLE: ${title}`);
     console.log(`CATEGORY: ${categoryName}`);
     console.log();
-    console.log("(Type your text and hit \"Enter\" to return to");
+    console.log('(Type your text and hit "Enter" to return to');
     console.log("the to-do list screen, 300 characters max.)");
     console.log();
     console.log("What is the description?");
@@ -85,48 +86,43 @@ class AddItemScreen {
 
   show() {
     this.printChoiceUi();
-    this.rl.question("> ", answer => {
+    this.rl.question("> ", (answer) => {
       if (answer === "1") {
         this.printNoteUi();
-        this.rl.question("> ", note => {
-          // TODO: Add a note to-do item to your state
-          //       using the variable note
-          // TODO: Save the state
+        this.rl.question("> ", (note) => {
+          this.state.addNote(answer);
+          this.state.save();
 
           const screen = new ManageTasksScreen(this.rl, this.state);
           screen.show();
         });
       } else if (answer === "2") {
         this.printTaskUi1();
-        this.rl.question("> ", title => {
+        this.rl.question("> ", (title) => {
           this.printTaskUi2(title);
-          this.rl.question("> ", categoryIndex => {
+          this.rl.question("> ", (categoryIndex) => {
             categoryIndex = Number.parseInt(categoryIndex) - 1;
-            // TODO: Use the value categoryIndex to get the
-            //       name of the category and set the following
-            //       value to the category name
-            const categoryName = "";
+
+            const categoryName = this.state.getCategoryByIndex(categoryIndex);
 
             this.printTaskUi3(title, categoryName);
-            this.rl.question("> ", description => {
-              // TODO: Add a task to-do item to your state
-              //       using the variables title, categoryIndex,
-              //       and description
-              // TODO: Save the state
+            this.rl.question("> ", (description) => {
+              this.state.addTask(title, description, categoryIndex);
+              this.state.save();
 
               const screen = new ManageTasksScreen(this.rl, this.state);
               screen.show();
             });
           });
-        })
+        });
       } else {
         this.show();
       }
-    })
+    });
   }
 }
 
 exports.AddItemScreen = AddItemScreen;
 
 // Requires at bottom to prevent circular dependencies problems in node
-const { ManageTasksScreen } = require('./manage-task-screen');
+const { ManageTasksScreen } = require("./manage-task-screen");
