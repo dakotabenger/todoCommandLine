@@ -43,6 +43,7 @@ class MainScreen {
         this.rl.close();
         return;
       }
+      console.clear();
       screen.show();
     });
   }

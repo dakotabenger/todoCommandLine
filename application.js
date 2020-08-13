@@ -59,7 +59,7 @@ getShortDesc(index) {
 }
 
 searchByTerm(string) {
-  let result = []
+  let result = [];
   for (let i = 0; i < this.tasks.length; i++) {
     if (this.tasks[i].matches(string)) {
       result.push(i);
@@ -131,11 +131,11 @@ complete() {
 
 //shortNote 
 shortDescription() {
-  return this.text.string(0, 50);
+  return this.text.substring(0, 50);
 }
 
 matches(string) {
-  return this.text.indexOf(string);
+  return this.text.indexOf(string) > -1;
 }
 
 }
@@ -149,7 +149,7 @@ matches(string) {
 // complete method, 
 
 class Task {
-  constructor(description, categoryIndex,completed){
+  constructor(title, description, categoryIndex, completed){
     this.type = 'Task'
     this.title = title;
     this.description = description;

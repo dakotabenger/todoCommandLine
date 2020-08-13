@@ -13,7 +13,7 @@ class EditCategoryScreen {
   }
 
   printUi() {
-    categoryName = this.state.getCategoryByIndex(this.categoryIndex)
+    let categoryName = this.state.getCategoryByIndex(this.categoryIndex)
     console.clear();
     console.log("********************************************");
     console.log("* EDIT CATEGORY                 (c) 1987   *");
@@ -31,7 +31,7 @@ class EditCategoryScreen {
     this.rl.question("> ", (newCategoryName) => {
       this.state.setCategory(this.categoryIndex,newCategoryName)
       this.state.save()
-
+      console.clear();
       new ManageCategoriesScreen(this.rl, this.state).show();
     });
   }

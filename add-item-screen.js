@@ -90,9 +90,9 @@ class AddItemScreen {
       if (answer === "1") {
         this.printNoteUi();
         this.rl.question("> ", (note) => {
-          this.state.addNote(answer);
+          this.state.addNote(note);
           this.state.save();
-
+          console.clear();
           const screen = new ManageTasksScreen(this.rl, this.state);
           screen.show();
         });
@@ -109,13 +109,14 @@ class AddItemScreen {
             this.rl.question("> ", (description) => {
               this.state.addTask(title, description, categoryIndex);
               this.state.save();
-
+              console.clear();
               const screen = new ManageTasksScreen(this.rl, this.state);
               screen.show();
             });
           });
         });
       } else {
+        console.clear();
         this.show();
       }
     });

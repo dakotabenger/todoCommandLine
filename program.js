@@ -12,5 +12,6 @@ fs.readFile(filePath, 'utf-8', (_, data) => {
   if (data) {
     state.loadFromJson(data);
   }
+  console.clear();
   new MainScreen(rl, state).show();
 })

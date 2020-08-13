@@ -33,8 +33,10 @@ class ManageCategoriesScreen {
     this.rl.question("> ", answer => {
       if (["1", "2", "3", "4", "5"].includes(answer)) {
         const index = Number.parseInt(answer) - 1;
+        console.clear();
         new EditCategoryScreen(this.rl, this.state, index).show();
       } else {
+        console.clear();
         new MainScreen(this.rl, this.state).show();
       }
     });

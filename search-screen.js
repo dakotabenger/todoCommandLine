@@ -36,7 +36,7 @@ class SearchScreen {
     const allIndex = this.state.searchByTerm(term);
     const numRows = process.stdout.rows - 8;
     for (let i of allIndex){
-      console.log(`${i + 1}. ${this.state.getItemListText(i)}`);
+      console.log(`${i + 1}. ${this.state.getShortDesc(i)}`);
       if (numRows <= 0) {
         break;
       }
@@ -51,6 +51,7 @@ class SearchScreen {
       this.printResultsUi(term);
       this.rl.question("Enter to return to the main screen. ", () => {
         const screen = new MainScreen(this.rl, this.state);
+        console.clear();
         screen.show();
       });
     });

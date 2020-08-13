@@ -53,12 +53,14 @@ class ItemDetailScreen {
           item.complete();
           this.state.save();
         }
+        console.clear();
         const screen = new ManageTasksScreen(this.rl, this.state);
         screen.show();
       });
     } catch(e) {
       console.log("That Item doesn't exist");
       const screen = new ManageTasksScreen(this.rl, this.state);
+      console.clear();
       screen.show();
     }
   }
